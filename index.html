@@ -905,7 +905,7 @@
 
   @keyframes flashText {
     0%, 100% { opacity: 1; }
-    50%       { opacity: 0.4; }
+    50%       { opacity: 0.8; }
   }
 
   /* MOBILE NAV OVERLAY */
@@ -1348,7 +1348,7 @@ The work captures Udvada not merely as a historic town, but as a living testimon
   scene.add(group);
 
   // Horizontal grid lines
-  const lineMat = new THREE.LineBasicMaterial({ color: 0x4a3a20, transparent: true, opacity: 0.6 });
+  const lineMat = new THREE.LineBasicMaterial({ color: 0x4a3a20, transparent: true, opacity: 0.8 });
   for (let i = -20; i <= 20; i += 2) {
     const geom = new THREE.BufferGeometry().setFromPoints([
       new THREE.Vector3(-60, i * 2, 0),
@@ -1366,7 +1366,7 @@ The work captures Udvada not merely as a historic town, but as a living testimon
   }
 
   // Floating circles (columns plan view)
-  const circleMat = new THREE.LineBasicMaterial({ color: 0x7a6030, transparent: true, opacity: 0.4 });
+  const circleMat = new THREE.LineBasicMaterial({ color: 0x7a6030, transparent: true, opacity: 0.8 });
   const circlePositions = [
     [-20, 15], [10, -10], [-5, -25], [25, 20], [-30, -5], [15, 30]
   ];
@@ -1529,7 +1529,7 @@ function openProject(id) {
             `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#d4a853" stroke-width="1" opacity="0.2"/>
              <circle cx="${cx}" cy="${cy}" r="${r*0.5}" fill="none" stroke="#c8b89a" stroke-width="0.7" opacity="0.18"/>`
           ).join('')}
-          <text x="600" y="220" text-anchor="middle" fill="#d4a853" opacity="1" font-size="200" font-family="serif" font-weight="300">${p.title.split(' ').pop()}</text>
+          <text x="600" y="220" text-anchor="middle" fill="#d4a853" opacity="0.05" font-size="200" font-family="serif" font-weight="300">${p.title.split(' ').pop()}</text>
         </svg>
         <div style="position:absolute;bottom:24px;left:32px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(212,168,83,0.6)">Render — Master Plan View</div>
       </div>
