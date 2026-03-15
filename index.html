@@ -173,7 +173,7 @@
     --accent: #8a6a30;
     --accent2: #6a4e20;
   }
-  body.light-mode #bg-canvas { opacity: 0.15; }
+  body.light-mode #bg-canvas { opacity: 0.40; }
   .hamburger {
     display: none;
     flex-direction: column;
@@ -905,7 +905,7 @@
 
   @keyframes flashText {
     0%, 100% { opacity: 1; }
-    50%       { opacity: 0.8; }
+    50%       { opacity: 0.4; }
   }
 
   /* MOBILE NAV OVERLAY */
@@ -1318,7 +1318,8 @@ The work captures Udvada not merely as a historic town, but as a living testimon
     year: "2025-26",
     type: "Architechtural Designer (Freelance)",
     title: "Freelancing",
-    subtitle: "Freelancing projects in architectural design, visualization, and drafting — details coming soon.",    
+    subtitle: "Freelancing projects in architectural design, visualization, and drafting — details coming soon.",  
+    excerpt: "",  
     image: "images/project6.jpg",
     description: `Project details coming soon.`,
     // specs: [
@@ -1348,7 +1349,7 @@ The work captures Udvada not merely as a historic town, but as a living testimon
   scene.add(group);
 
   // Horizontal grid lines
-  const lineMat = new THREE.LineBasicMaterial({ color: 0x4a3a20, transparent: true, opacity: 0.8 });
+  const lineMat = new THREE.LineBasicMaterial({ color: 0x4a3a20, transparent: true, opacity: 0.6 });
   for (let i = -20; i <= 20; i += 2) {
     const geom = new THREE.BufferGeometry().setFromPoints([
       new THREE.Vector3(-60, i * 2, 0),
@@ -1366,7 +1367,7 @@ The work captures Udvada not merely as a historic town, but as a living testimon
   }
 
   // Floating circles (columns plan view)
-  const circleMat = new THREE.LineBasicMaterial({ color: 0x7a6030, transparent: true, opacity: 0.8 });
+  const circleMat = new THREE.LineBasicMaterial({ color: 0x7a6030, transparent: true, opacity: 0.4 });
   const circlePositions = [
     [-20, 15], [10, -10], [-5, -25], [25, 20], [-30, -5], [15, 30]
   ];
