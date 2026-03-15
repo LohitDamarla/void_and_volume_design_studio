@@ -985,6 +985,13 @@
     .hero-ctas { flex-direction: column; align-items: flex-start; }
     .modal-specs { grid-template-columns: 1fr; }
   }
+
+  body {
+  -webkit-user-select: none;
+  -moz-user-select: none;
+  -ms-user-select: none;
+  user-select: none;
+}
 </style>
 </head>
 <body>
@@ -1004,7 +1011,7 @@
     <li><a href="#projects">Projects</a></li>
     <li><a href="#about">About</a></li>
     <li>
-      <a href="SAMPLE_SELF_PORTFOLIO_4_compressed.pdf#toolbar=0&navpanes=0&scrollbar=0" 
+      <a href="SAMPLE_SELF_PORTFOLIO_4.3_compressed.pdf#toolbar=0&navpanes=0&scrollbar=0" 
         target="_blank" 
         class="nav-pdf-btn"
         oncontextmenu="return false">
@@ -1689,6 +1696,45 @@ document.addEventListener('keydown', e => {
     }
   }
 });
+
+// ============================================================
+// CONTENT PROTECTION
+// ============================================================
+
+// Disable right-click
+document.addEventListener('contextmenu', e => e.preventDefault());
+
+// Disable keyboard shortcuts
+document.addEventListener('keydown', e => {
+  // Block Ctrl+C, Ctrl+X, Ctrl+U, Ctrl+S, Ctrl+A, Ctrl+P
+  if (e.ctrlKey && ['c','x','u','s','a','p'].includes(e.key.toLowerCase())) {
+    e.preventDefault();
+    return false;
+  }
+  // Block F12, Ctrl+Shift+I, Ctrl+Shift+J, Ctrl+Shift+C (devtools)
+  if (
+    e.key === 'F12' ||
+    (e.ctrlKey && e.shiftKey && ['i','j','c'].includes(e.key.toLowerCase()))
+  ) {
+    e.preventDefault();
+    return false;
+  }
+  // Block Print Screen key
+  if (e.key === 'PrintScreen') {
+    e.preventDefault();
+    navigator.clipboard?.writeText('');
+    return false;
+  }
+});
+
+// Disable drag on all images
+document.addEventListener('dragstart', e => {
+  if (e.target.tagName === 'IMG') e.preventDefault();
+});
+
+// Disable selecting text on double click
+document.addEventListener('selectstart', e => e.preventDefault());
+
 </script>
 <!-- LIGHTBOX -->
 <div id="lightbox" onclick="closeLightbox()" style="
