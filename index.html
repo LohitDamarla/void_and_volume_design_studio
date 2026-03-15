@@ -1204,7 +1204,7 @@ const projects = [
     type: "Institutional Design",
     title: "The Flow Forum",
     subtitle: "University Campus Design - Anand, Gujarat",
-    excerpt: "A circular, organic campus where fluid geometry shapes both built and open spaces. Approved government project.",
+    excerpt: "A circular, organic campus where fluid geometry shapes both built and open spaces.",
     image: "images/project1.jpg",
     description: `The Flow Forum is a large-scale institutional design for a university campus in Anand, Gujarat - project. The design philosophy centers on organic circular modules that form academic blocks, courtyards, and fluid movement paths, creating a campus that breathes and flows rather than imposes rigid geometry.
 
@@ -1221,6 +1221,11 @@ The exploded axonometric breaks the project into three legible layers: the roof 
     heroColor: "#1a1a12",
     // Using placeholder gradient images since no image URLs available
     hasGallery: true,
+    gallery: [
+      { src: "images/pro1_plan.jpg", label: "Plan" },
+      { src: "images/pro1_render.jpg", label: "Render" },
+],
+
   },
 
   {
@@ -1245,6 +1250,10 @@ Behind the workshop, four dwellings for workers provide a sense of continuity an
       { label: "Tools", value: "AutoCAD, Sketchup, Enscape" },
     ],
     hasGallery: true,
+    gallery: [
+      { src: "images/pro2_plan.jpg", label: "Plan" },
+      { src: "images/pro2_render.jpg", label: "Render" },
+],
   },
   
   {
@@ -1268,6 +1277,10 @@ Additional functional aspects such as rooftop water tanks, plumbing chambers, an
     { label: "Tools", value: "AutoCAD, Sketchup, Enscape" },
   ],
   hasGallery: false,
+  gallery: [
+    { src: "images/pro3_plan.jpg", label: "Plan" },
+    { src: "images/pro3_render.jpg", label: "Render" },
+],
 },
 
   {
@@ -1288,6 +1301,12 @@ Additional functional aspects such as rooftop water tanks, plumbing chambers, an
       { label: "Tools", value: "AutoCAD, Enscape" },
     ],
     hasGallery: true,
+    gallery: [
+      { src: "images/pro4_plan.jpg", label: "Plan" },
+      { src: "images/pro4_render.jpg", label: "Render" },
+    ],
+    
+
   },
 
   {
@@ -1312,21 +1331,22 @@ The work captures Udvada not merely as a historic town, but as a living testimon
       { label: "Tools", value: "AutoCAD, Photoshop, Sketchup" },
     ],
     hasGallery: true,
+    gallery: [
+      { src: "images/pro5_plan.jpg", label: "Plan" },
+      { src: "images/pro5_render.jpg", label: "Render" },
+    ],
   },
+
   {
     id: 6,
     year: "2025-26",
     type: "Architechtural Designer (Freelance)",
     title: "Freelancing",
     subtitle: "Freelancing projects in architectural design, visualization, and drafting — details coming soon.",  
-    excerpt: "",  
+    excerpt: "",
     image: "images/project6.jpg",
     description: `Project details coming soon.`,
-    // specs: [
-    //   { label: "Year", value: "2025" },
-    //   { label: "Program", value: "Residential Design" },
-    //   { label: "Tools", value: "AutoCAD, Sketchup, Enscape" },
-    // ],
+    
     // hasGallery: true,
   },
   
@@ -1520,37 +1540,35 @@ function openProject(id) {
   if (!p) return;
   const modal = document.getElementById('projectModal');
   const content = document.getElementById('modalContent');
-  const galleryHTML = p.hasGallery ? `
-    <div class="modal-gallery">
-      <div style="background:${cardGradients[id-1]};height:400px;grid-column:1/-1;position:relative;overflow:hidden;" class="full-width">
-        <svg width="100%" height="100%" viewBox="0 0 1200 400" xmlns="http://www.w3.org/2000/svg" style="position:absolute;top:0;left:0;">
-          <defs><pattern id="mg1" width="60" height="60" patternUnits="userSpaceOnUse"><path d="M 60 0 L 0 0 0 60" fill="none" stroke="#d4a853" stroke-width="0.4" opacity="0.3"/></pattern></defs>
-          <rect width="1200" height="400" fill="url(#mg1)"/>
-          ${[[200,200,90],[500,150,70],[800,220,60],[1000,180,50],[350,300,40]].map(([cx,cy,r])=>
-            `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#d4a853" stroke-width="1" opacity="0.2"/>
-             <circle cx="${cx}" cy="${cy}" r="${r*0.5}" fill="none" stroke="#c8b89a" stroke-width="0.7" opacity="0.18"/>`
-          ).join('')}
-          <text x="600" y="220" text-anchor="middle" fill="#d4a853" opacity="0.05" font-size="200" font-family="serif" font-weight="300">${p.title.split(' ').pop()}</text>
-        </svg>
-        <div style="position:absolute;bottom:24px;left:32px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.12em;text-transform:uppercase;color:rgba(212,168,83,0.6)">Render — Master Plan View</div>
+
+  const galleryHTML = (p.hasGallery && p.gallery && p.gallery.length) ? `
+    <div style="margin-bottom:80px;">
+      <div style="display:flex;align-items:baseline;gap:16px;margin-bottom:32px;">
+        <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.15em;color:var(--gold);">—</span>
+        <h3 style="font-family:'Cormorant Garamond',serif;font-size:28px;font-weight:300;color:var(--text);">Project Drawings</h3>
       </div>
-      ${[[0,'Site Plan'],[1,'Section Study']].map(([ci,label])=>`
-        <div style="background:${cardGradients[(id+ci)%cardGradients.length]};height:280px;position:relative;overflow:hidden;">
-          <svg width="100%" height="100%" viewBox="0 0 600 280" xmlns="http://www.w3.org/2000/svg" style="position:absolute;top:0;left:0;">
-            <defs><pattern id="mg${ci+2}" width="40" height="40" patternUnits="userSpaceOnUse"><path d="M 40 0 L 0 0 0 40" fill="none" stroke="#d4a853" stroke-width="0.3" opacity="0.25"/></pattern></defs>
-            <rect width="600" height="280" fill="url(#mg${ci+2})"/>
-            ${[[150,140,50],[350,100,35],[480,180,30]].map(([cx,cy,r])=>
-              `<circle cx="${cx}" cy="${cy}" r="${r}" fill="none" stroke="#d4a853" stroke-width="0.8" opacity="0.25"/>`
-            ).join('')}
-          </svg>
-          <div style="position:absolute;bottom:16px;left:20px;font-family:'Space Mono',monospace;font-size:10px;letter-spacing:0.1em;text-transform:uppercase;color:rgba(212,168,83,0.5)">${label}</div>
-        </div>
-      `).join('')}
+      <div style="display:grid;grid-template-columns:1fr 1fr;gap:16px;">
+        ${p.gallery.slice(0,2).map((img, i) => `
+          <div style="position:relative;overflow:hidden;background:var(--card);border:1px solid var(--border);">
+            <img src="${img.src}" alt="${img.label}"
+              style="width:100%;height:420px;object-fit:cover;display:block;transition:transform 0.5s ease;"
+              onmouseover="this.style.transform='scale(1.03)'"
+              onmouseout="this.style.transform='scale(1)'"
+              onerror="this.parentElement.style.background='var(--card)'"
+            />
+            <div style="position:absolute;bottom:0;left:0;right:0;padding:20px 24px;background:linear-gradient(to top,rgba(10,10,10,0.9) 0%,transparent 100%);display:flex;align-items:center;gap:12px;">
+              <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.15em;text-transform:uppercase;color:var(--gold);">${String(i+1).padStart(2,'0')}</span>
+              <span style="font-family:'Space Mono',monospace;font-size:11px;letter-spacing:0.14em;text-transform:uppercase;color:rgba(240,236,228,0.8);">${img.label}</span>
+            </div>
+          </div>
+        `).join('')}
+      </div>
     </div>
   ` : '';
 
   content.innerHTML = `
-    <div class="modal-hero" style="background:${cardGradients[id-1]}">
+    <div class="modal-hero" style="background:${cardGradients[id-1 < cardGradients.length ? id-1 : 0]}">
+    ${p.image ? `<img src="${p.image}" alt="${p.title}" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0.6;">` : ''}
       <svg width="100%" height="100%" viewBox="0 0 1400 700" xmlns="http://www.w3.org/2000/svg" style="position:absolute;top:0;left:0;">
         <defs><pattern id="mhgrid" width="70" height="70" patternUnits="userSpaceOnUse"><path d="M 70 0 L 0 0 0 70" fill="none" stroke="#d4a853" stroke-width="0.4" opacity="0.15"/></pattern></defs>
         <rect width="1400" height="700" fill="url(#mhgrid)"/>
